@@ -1,0 +1,25 @@
+{
+	"name": "格瓦拉小助手",
+	"short_name": "小格助手",
+	"description": "去除各种讨厌的提示信息",
+	"icons": {
+	},
+	"manifest_version": 2,
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+	"permissions": [
+		"tabs",
+		"webRequest", "webRequestBlocking", "cookies",
+		"*://www.gewara.com/*",
+		"*://m.gewara.com/*",
+		"*://pay.gewara.com/*",
+		"*://*.bypay.cn/*",
+		"*://*.alipay.com/*"
+	],
+	"incognito": "split",
+	"version": "0.0.1"
+}
