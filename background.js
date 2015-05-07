@@ -4,13 +4,17 @@ function cookies_monitor(changeInfo){
 	var c = changeInfo.cookie;
 	if(c.domain.search('gewara') > -1) {
 		if(c.name == 'useMovieVersion' && c.value != 'oldv6.0') {
-			chrome.cookies.set({
-				url: 'http://www.gewara.com/',
-				name: 'useMovieVersion',
-				value: 'oldv6.0'
-			}, log_added);
+			chrome.cookies.set(cc('useMovieVersion', 'oldv6.0'), log_added);
 		}
 	}
+}
+
+function cc(k, v){
+	return {
+		url: 'http://www.gewara.com/',
+		name: k,
+		value: v
+	};
 }
 
 function logme(o, r){
@@ -26,23 +30,11 @@ function log_changed(o){
 	return logme(o, 'changed');
 }
 
-chrome.cookies.set({
-	url: 'http://www.gewara.com/',
-	name: 'tuipiaoTips',
-	value: 'true'
-}, log_added);
+chrome.cookies.set(cc('tuipiaoTips', 'true'), log_added);
 
-chrome.cookies.set({
-	url: 'http://www.gewara.com/',
-	name: 'tuipiaoInfo',
-	value: 'true'
-}, log_added);
+chrome.cookies.set(cc('tuipiaoInfo', 'true'), log_added);
 
-chrome.cookies.set({
-	url: 'http://www.gewara.com/',
-	name: 'useMovieVersion',
-	value: 'oldv6.0'
-}, log_added);
+chrome.cookies.set(cc('useMovieVersion', 'oldv6.0'), log_added);
 
 chrome.cookies.onChanged.addListener(cookies_monitor);
 
