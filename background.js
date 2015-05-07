@@ -13,7 +13,8 @@ function cc(k, v){
 	return {
 		url: 'http://www.gewara.com/',
 		name: k,
-		value: v
+		value: v,
+		expirationDate: parseInt((new Date()).getTime()/1000 + 60*60*24*365)
 	};
 }
 
