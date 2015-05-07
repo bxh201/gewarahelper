@@ -12,11 +12,10 @@
 		]
 	},
 	"permissions": [
+		"cookies",
 		"tabs",
-		"webRequest", "webRequestBlocking", "cookies",
-		"*://www.gewara.com/*",
-		"*://m.gewara.com/*",
-		"*://pay.gewara.com/*",
+		"webRequest", "webRequestBlocking",
+		"*://*.gewara.com/*",
 		"*://*.bypay.cn/*",
 		"*://*.alipay.com/*"
 	],
