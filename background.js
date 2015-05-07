@@ -1,4 +1,18 @@
 
+function cookies_monitor(changeInfo){
+	logme(changeInfo);
+	var c = changeInfo.cookie;
+	if(c.domain.search('gewara') > -1) {
+		if(c.name == 'useMovieVersion' && c.value != 'oldv6.0') {
+			chrome.cookies.set({
+				url: 'http://www.gewara.com/',
+				name: 'useMovieVersion',
+				value: 'oldv6.0'
+			}, logme);
+		}
+	}
+}
+
 function logme(o){
 	console.log(JSON.stringify(o));
 }
@@ -21,6 +35,7 @@ chrome.cookies.set({
 	value: 'oldv6.0'
 }, logme);
 
+chrome.cookies.onChanged.addListener(cookies_monitor);
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
 	function(details) {
