@@ -12,6 +12,7 @@
 		]
 	},
 	"browser_action": {
+		"default_icon": "s/icon.png",
 		"default_title": "小格助手-辅助功能",
 		"default_popup": "popup.html"
 	},
