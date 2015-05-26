@@ -17,8 +17,9 @@
 		"webRequest", "webRequestBlocking",
 		"*://*.gewara.com/*",
 		"*://*.bypay.cn/*",
-		"*://*.alipay.com/*"
+		"*://*.alipay.com/*",
+		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.2"
+	"version": "0.0.3"
 }
