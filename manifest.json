@@ -11,6 +11,10 @@
 			"background.js"
 		]
 	},
+	"browser_action": {
+		"default_title": "小格助手-辅助功能",
+		"default_popup": "popup.html"
+	},
 	"permissions": [
 		"cookies",
 		"tabs",
@@ -21,5 +25,5 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.3"
+	"version": "0.0.4"
 }
