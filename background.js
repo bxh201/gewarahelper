@@ -55,7 +55,8 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 		"*://pay.gewara.com/*",
 		"*://wappay.bypay.cn/*",
 		"*://wappaygw.alipay.com/*",
-		"https://netpay.cmbchina.com/netpayment/BaseHttp.dll*"
+		"*://netpay.cmbchina.com/netpayment/basehttp.dll*",
+		"*://netpay.cmbchina.com/netpayment/BaseHttp.dll*"
 		]
 	},
 	// extraInfoSpec
