@@ -17,3 +17,12 @@ _b2.onclick = function(){
 		name: 'partnerName'
 	});
 };
+
+_ccb.onclick = function(){
+	chrome.cookies.set(mcc('partnerName', 'ccbAppPay'));
+};
+
+_sf.onclick = function(){
+	chrome.cookies.set(mcc('partnerName', 'sfAppPay'));
+};
+
