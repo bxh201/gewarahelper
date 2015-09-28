@@ -62,3 +62,16 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 	// extraInfoSpec
 	["blocking", "requestHeaders"]
 );
+
+chrome.webRequest.onBeforeRequest.addListener(
+	function(details) {
+		return {cancel: true};
+	},
+	{
+		urls: [
+		"*://pi.gewara.com/*"
+	]
+	},
+	["blocking"]
+);
+
