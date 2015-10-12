@@ -1,4 +1,3 @@
-
 function cookies_monitor(changeInfo){
 	log_changed(changeInfo);
 	var c = changeInfo.cookie;
@@ -45,23 +44,25 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 		for (var i = 0; i < details.requestHeaders.length; ++i) {
 			if (details.requestHeaders[i].name === 'User-Agent') {
 				details.requestHeaders[i].value = 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H321 MicroMessenger/6.2.4 NetType/WIFI Language/zh_CN';
-				return {requestHeaders: details.requestHeaders};
+				return {
+					requestHeaders: details.requestHeaders
+				};
 			}
 		}
 	},
 	// filters
 	{
 		urls: [
-		"*://m.gewara.com/*",
-		"*://pay.gewara.com/*",
-		"*://wappay.bypay.cn/*",
-		"*://wappaygw.alipay.com/*",
-		"*://netpay.cmbchina.com/netpayment/basehttp.dll*",
-		"*://netpay.cmbchina.com/netpayment/BaseHttp.dll*"
+			'*://m.gewara.com/*',
+			'*://pay.gewara.com/*',
+			'*://wappay.bypay.cn/*',
+			'*://wappaygw.alipay.com/*',
+			'*://netpay.cmbchina.com/netpayment/basehttp.dll*',
+			'*://netpay.cmbchina.com/netpayment/BaseHttp.dll*'
 		]
 	},
 	// extraInfoSpec
-	["blocking", "requestHeaders"]
+	['blocking', 'requestHeaders']
 );
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
@@ -87,12 +88,9 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 chrome.webRequest.onBeforeRequest.addListener(
 	function(details) {
 		return {cancel: true};
-	},
-	{
+	}, {
 		urls: [
-		"*://pi.gewara.com/*"
-	]
-	},
-	["blocking"]
+			'*://pi.gewara.com/*'
+		]
+	}, ['blocking']
 );
-
