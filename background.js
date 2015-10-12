@@ -41,6 +41,7 @@ chrome.cookies.onChanged.addListener(cookies_monitor);
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
 	function(details) {
+		// console.log(details);
 		for (var i = 0; i < details.requestHeaders.length; ++i) {
 			if (details.requestHeaders[i].name === 'User-Agent') {
 				details.requestHeaders[i].value = 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H321 MicroMessenger/6.2.4 NetType/WIFI Language/zh_CN';
@@ -61,6 +62,26 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 	},
 	// extraInfoSpec
 	["blocking", "requestHeaders"]
+);
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+	function(details) {
+		console.log(details);
+		for (var i = 0; i < details.requestHeaders.length; ++i) {
+			if (details.requestHeaders[i].name.toLowerCase() == 'referer') {
+				// console.log('removed referrer:', details.requestHeaders.splice(i, 1));
+				// Location: http://m.gewara.com/movie/m/home/redirect:/touch/home/confirmOrder.xhtml
+				details.requestHeaders[i].value = details.url.replace('/useDiscount.xhtml', '/confirmOrder.xhtml');
+				return {
+					requestHeaders: details.requestHeaders
+				};
+			}
+		}
+	}, {
+		urls: [
+			'http://m.gewara.com/*/useDiscount.xhtml?tradeNo=*'
+		]
+	}, ['blocking', 'requestHeaders']
 );
 
 chrome.webRequest.onBeforeRequest.addListener(
