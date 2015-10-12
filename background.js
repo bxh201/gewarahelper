@@ -1,3 +1,4 @@
+/*
 function cookies_monitor(changeInfo){
 	log_changed(changeInfo);
 	var c = changeInfo.cookie;
@@ -7,6 +8,7 @@ function cookies_monitor(changeInfo){
 		}
 	}
 }
+*/
 
 function cc(k, v){
 	return {
@@ -34,9 +36,9 @@ chrome.cookies.set(cc('tuipiaoTips', 'true'), log_added);
 
 chrome.cookies.set(cc('tuipiaoInfo', 'true'), log_added);
 
-chrome.cookies.set(cc('useMovieVersion', 'oldv6.0'), log_added);
+// chrome.cookies.set(cc('useMovieVersion', 'oldv6.0'), log_added);
 
-chrome.cookies.onChanged.addListener(cookies_monitor);
+// chrome.cookies.onChanged.addListener(cookies_monitor);
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
 	function(details) {
