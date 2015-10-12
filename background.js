@@ -42,7 +42,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 	function(details) {
 		// console.log(details);
 		for (var i = 0; i < details.requestHeaders.length; ++i) {
-			if (details.requestHeaders[i].name === 'User-Agent') {
+			if (details.requestHeaders[i].name.toLowerCase() === 'user-agent') {
 				details.requestHeaders[i].value = 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H321 MicroMessenger/6.2.4 NetType/WIFI Language/zh_CN';
 				return {
 					requestHeaders: details.requestHeaders
