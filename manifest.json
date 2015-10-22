@@ -15,6 +15,11 @@
 			"matches": ["*://m.gewara.com/wz/special/gl8dlam/index.xhtml*"],
 			"js": ["m.wz.special.gl8dlam.js"],
 			"run_at": "document_end"
+		},
+		{
+			"matches": ["*://www.gewara.com/everday/acct/mygift.xhtml*"],
+			"js": ["www.mygift.filltext.js"],
+			"run_at": "document_end"
 		}
 	],
 	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
@@ -38,5 +43,5 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.12"
+	"version": "0.0.13"
 }
