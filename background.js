@@ -88,6 +88,18 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 );
 
 chrome.webRequest.onBeforeRequest.addListener(
+	function(info) {
+		return {
+			redirectUrl: info.url.replace('/cinemaDetail.xhtml', '/choiceMovie.xhtml')
+		};
+	}, {
+		urls: [
+			'http://m.gewara.com/*/cinemaDetail.xhtml?cid=*'
+		]
+	}, ['blocking']
+);
+
+chrome.webRequest.onBeforeRequest.addListener(
 	function(details) {
 		return {cancel: true};
 	}, {
