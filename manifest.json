@@ -17,6 +17,11 @@
 			"run_at": "document_end"
 		},
 		{
+			"matches": ["*://www.gewara.com/gewapay/showOrder.xhtml?orderId=*"],
+			"js": ["3rd/jquery-2.1.4.js", "www.sms.js", "www.gewapay.showOrder.js"],
+			"run_at": "document_end"
+		},
+		{
 			"matches": ["*://www.gewara.com/everday/acct/mygift.xhtml*"],
 			"js": ["www.mygift.filltext.js"],
 			"run_at": "document_end"
