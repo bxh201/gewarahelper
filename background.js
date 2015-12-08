@@ -158,7 +158,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 		};
 	}, {
 		urls: [
-			'*://wap.wandafilm.com/thirdparty/cinemahallseats.do*mobile=*'
+			'*://*.wandafilm.com/thirdparty/cinemahallseats.do*mobile=*'
 		]
 	}, ['blocking']
 );

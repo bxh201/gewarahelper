@@ -36,8 +36,9 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["*://wap.wandafilm.com/thirdparty/cinemahallseats.do*mobile=*"],
+			"matches": ["*://*.wandafilm.com/thirdparty/cinemahallseats.do*mobile=*"],
 			"js": ["jsapi.js", "wanda.mobile.js"],
+			"all_frames": true,
 			"run_at": "document_end"
 		}
 	],
@@ -65,5 +66,5 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.15"
+	"version": "0.0.16"
 }
