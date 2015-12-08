@@ -96,3 +96,19 @@ var _保存按钮绑定 = function(按钮, 映射) {
 _保存按钮绑定(_b_saveua, map_ua);
 _保存按钮绑定(_b_savewanda, map_wanda);
 
+
+_ua.style.width = '100%';
+
+var resize = function(w, h){
+	if(document) {
+		var html = document.getElementsByTagName('html')[0];
+		if(html) {
+			if(w)html.style.width = w;
+			if(h)html.style.height = h;
+		}
+	}
+	return window ? [window.innerWidth, window.innerHeight] : [w, h];
+};
+
+resize(400);
+
