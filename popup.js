@@ -76,6 +76,12 @@ var map_ua = {
 	UA: _ua
 };
 
+var map_wanda = {
+	'万达手机号': _wanda
+};
+
+var map_load = Object.assign({}, map_ua, map_wanda);
+
 _b_saveua.onclick = function() {
 	_b_saveua.disabled = true;
 	chrome.storage.sync.set(genkv(map_ua), function() {
@@ -83,5 +89,16 @@ _b_saveua.onclick = function() {
 	});
 };
 
-chrome.storage.sync.get(genkv(map_ua), gencb(map_ua));
+chrome.storage.sync.get(genkv(map_load), gencb(map_load));
+
+var _保存按钮绑定 = function(按钮, 映射) {
+	按钮.onclick = function() {
+		按钮.disabled = true;
+		chrome.storage.sync.set(genkv(映射), function() {
+			按钮.disabled = false;
+		});
+	};
+};
+
+_保存按钮绑定(_b_savewanda, map_wanda);
 
