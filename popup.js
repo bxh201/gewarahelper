@@ -82,13 +82,6 @@ var map_wanda = {
 
 var map_load = Object.assign({}, map_ua, map_wanda);
 
-_b_saveua.onclick = function() {
-	_b_saveua.disabled = true;
-	chrome.storage.sync.set(genkv(map_ua), function() {
-		_b_saveua.disabled = false;
-	});
-};
-
 chrome.storage.sync.get(genkv(map_load), gencb(map_load));
 
 var _保存按钮绑定 = function(按钮, 映射) {
@@ -100,5 +93,6 @@ var _保存按钮绑定 = function(按钮, 映射) {
 	};
 };
 
+_保存按钮绑定(_b_saveua, map_ua);
 _保存按钮绑定(_b_savewanda, map_wanda);
 
