@@ -19,7 +19,7 @@ if (手机号) {
 	按钮.style.display = 'inline';
 	按钮.style.width = '3em';
 	按钮.onclick = function() {
-		alert(修改链接(输入框.value));
+		//alert(修改链接(输入框.value));
 		document.location = 修改链接(输入框.value);
 	};
 }

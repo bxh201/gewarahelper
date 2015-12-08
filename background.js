@@ -1,7 +1,10 @@
 
 var defaultUA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13A452 MicroMessenger/6.3.6 NetType/WIFI Language/zh_CN';
 var vars = {
-	UA: defaultUA
+	UA: defaultUA,
+	'万达手机号': false,
+	'万达手机号自动修改': false,
+	'key': 'value'
 };
 
 chrome.storage.sync.get(vars, function(o) {
@@ -136,3 +139,27 @@ chrome.webRequest.onBeforeRequest.addListener(
 		]
 	}, ['blocking']
 );
+
+chrome.webRequest.onBeforeRequest.addListener(
+	function(info) {
+		if (!vars['万达手机号自动修改'] || !vars['万达手机号']) {
+			return {cancel: false};
+		};
+		console.log('万达选座', info.url);
+		var 手机号 = 获取参数('mobile', info.url);
+		console.log('万达选座手机号', 手机号);
+		if (!手机号 || 手机号 == vars['万达手机号']) {
+			console.log('万达选座不用修改', 手机号);
+			return {cancel: false};
+		}
+		console.log('万达选座需要修改', 手机号, vars['万达手机号']);
+		return {
+			redirectUrl: info.url.replace(/mobile=\d+/, 'mobile=' + vars['万达手机号'])
+		};
+	}, {
+		urls: [
+			'*://wap.wandafilm.com/thirdparty/cinemahallseats.do*mobile=*'
+		]
+	}, ['blocking']
+);
+

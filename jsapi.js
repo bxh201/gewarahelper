@@ -30,8 +30,9 @@ var url正则 = function(参数名) {
 	return new RegExp('(?:' + 参数名 + '=)(\\d+)');
 };
 
-var 获取参数 = function(参数名) {
-	var 匹配 = document.location.href.match(url正则(参数名));
+var 获取参数 = function(参数名, 链接) {
+	if(!链接) 链接 = document.location.href;
+	var 匹配 = 链接.match(url正则(参数名));
 	if (匹配.length == 2) return 匹配[1];
 	return false;
 };

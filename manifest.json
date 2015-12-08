@@ -44,6 +44,7 @@
 	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
 	"background": {
 		"scripts": [
+			"jsapi.js",
 			"background.js"
 		]
 	},
@@ -58,6 +59,7 @@
 		"tabs",
 		"webRequest", "webRequestBlocking",
 		"*://*.gewara.com/*",
+		"*://*.wandafilm.com/*",
 		"*://*.bypay.cn/*",
 		"*://*.alipay.com/*",
 		"*://*.cmbchina.com/*"
