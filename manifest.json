@@ -49,6 +49,7 @@
 	},
 	"permissions": [
 		"cookies",
+		"storage",
 		"tabs",
 		"webRequest", "webRequestBlocking",
 		"*://*.gewara.com/*",

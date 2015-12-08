@@ -1,3 +1,28 @@
+
+var vars = {
+	UA: 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13A452 MicroMessenger/6.3.6 NetType/WIFI Language/zh_CN'
+};
+
+chrome.storage.sync.get(vars, function(o) {
+	for (var k in o) {
+		if (o.hasOwnProperty(k) && o[k]) {
+			vars[k] = o[k];
+		}
+	}
+});
+
+chrome.storage.onChanged.addListener(
+	function(changes, areaName) {
+		if (areaName != 'sync') return;
+		for (var k in changes) {
+			if (changes.hasOwnProperty(k)) {
+				vars[k] = changes[k]['newValue'];
+			}
+		}
+	}
+);
+
+
 /*
 function cookies_monitor(changeInfo){
 	log_changed(changeInfo);
@@ -45,7 +70,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 		// console.log(details);
 		for (var i = 0; i < details.requestHeaders.length; ++i) {
 			if (details.requestHeaders[i].name.toLowerCase() === 'user-agent') {
-				details.requestHeaders[i].value = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13A452 MicroMessenger/6.3.6 NetType/WIFI Language/zh_CN';
+				details.requestHeaders[i].value = vars.UA;
 				return {
 					requestHeaders: details.requestHeaders
 				};
