@@ -1,12 +1,13 @@
 
+var defaultUA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13A452 MicroMessenger/6.3.6 NetType/WIFI Language/zh_CN';
 var vars = {
-	UA: 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13A452 MicroMessenger/6.3.6 NetType/WIFI Language/zh_CN'
+	UA: defaultUA
 };
 
 chrome.storage.sync.get(vars, function(o) {
 	console.log('storget', o);
 	for (var k in o) {
-		if (o.hasOwnProperty(k) && o[k]) {
+		if (o.hasOwnProperty(k)) {
 			vars[k] = o[k];
 		}
 	}
@@ -72,7 +73,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 		// console.log(details);
 		for (var i = 0; i < details.requestHeaders.length; ++i) {
 			if (details.requestHeaders[i].name.toLowerCase() === 'user-agent') {
-				details.requestHeaders[i].value = vars.UA;
+				details.requestHeaders[i].value = vars.UA ? vars.UA : defaultUA;
 				return {
 					requestHeaders: details.requestHeaders
 				};
