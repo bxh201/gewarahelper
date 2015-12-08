@@ -46,7 +46,7 @@ function cc(k, v){
 
 function logme(o, r){
 	r = r ? r + ': ' : '';
-	console && console.log(r + JSON.stringify(o));
+	console && console.error(r + JSON.stringify(o));
 }
 
 function log_added(o){
