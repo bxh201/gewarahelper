@@ -34,6 +34,11 @@
 			"matches": ["*://www.gewara.com/everday/acct/mygift.xhtml*"],
 			"js": ["www.mygift.filltext.js"],
 			"run_at": "document_end"
+		},
+		{
+			"matches": ["*://wap.wandafilm.com/thirdparty/cinemahallseats.do*mobile=*"],
+			"js": ["jsapi.js", "wanda.mobile.js"],
+			"run_at": "document_end"
 		}
 	],
 	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",

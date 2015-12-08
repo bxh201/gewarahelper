@@ -79,22 +79,31 @@ var map_ua = {
 var map_wanda = {
 	'万达手机号': _wanda
 };
+var map_wanda_automod = {
+	'万达手机号自动修改': _wanda_automod
+};
 
 var map_load = Object.assign({}, map_ua, map_wanda);
 
 chrome.storage.sync.get(genkv(map_load), gencb(map_load));
+chrome.storage.sync.get(genkv(map_wanda_automod, 'checkbox'), gencb(map_wanda_automod, null, 'checkbox'));
 
-var _保存按钮绑定 = function(按钮, 映射) {
+var _保存按钮绑定 = function(按钮, 映射, t, ex) {
 	按钮.onclick = function() {
 		按钮.disabled = true;
-		chrome.storage.sync.set(genkv(映射), function() {
+		var o = Object.assign({}, genkv(映射, t));
+		if(ex && ex.length) ex.forEach(function(e){
+			o = Object.assign({}, o, genkv(e[0], e[1]));
+		});
+		console.log('storset', o);
+		chrome.storage.sync.set(o, function() {
 			按钮.disabled = false;
 		});
 	};
 };
 
 _保存按钮绑定(_b_saveua, map_ua);
-_保存按钮绑定(_b_savewanda, map_wanda);
+_保存按钮绑定(_b_savewanda, map_wanda, 'text', [[map_wanda_automod, 'checkbox']]);
 
 
 _ua.style.width = '100%';
