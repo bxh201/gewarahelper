@@ -4,6 +4,7 @@ var vars = {
 };
 
 chrome.storage.sync.get(vars, function(o) {
+	console.log('storget', o);
 	for (var k in o) {
 		if (o.hasOwnProperty(k) && o[k]) {
 			vars[k] = o[k];
@@ -13,6 +14,7 @@ chrome.storage.sync.get(vars, function(o) {
 
 chrome.storage.onChanged.addListener(
 	function(changes, areaName) {
+		console.log('storchange', changes, areaName);
 		if (areaName != 'sync') return;
 		for (var k in changes) {
 			if (changes.hasOwnProperty(k)) {
