@@ -1,0 +1,11 @@
+
+/*
+@media screen and (orientation:landscape){
+	.orientation {display:block;}
+}
+*/
+
+@media screen and (orientation: landscape) {
+	.orientation {display: none!important;}
+}
+

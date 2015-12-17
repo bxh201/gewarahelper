@@ -26,6 +26,10 @@
 			"run_at": "document_end"
 		},
 		{
+			"matches": ["*://m.gewara.com/wz/special/quan/index.xhtml?id=*"],
+			"css": ["m.wz.special.quan.css"]
+		},
+		{
 			"matches": ["*://www.gewara.com/gewapay/showOrder.xhtml?orderId=*", "*://www.gewara.com/gewapay/orderResult.xhtml?orderId=*"],
 			"js": ["3rd/jquery-2.1.4.js", "www.sms.js", "www.gewapay.showOrder.js"],
 			"run_at": "document_end"
@@ -71,5 +75,5 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.16"
+	"version": "0.0.17"
 }
