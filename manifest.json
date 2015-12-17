@@ -7,6 +7,11 @@
 	"manifest_version": 2,
 	"content_scripts": [
 		{
+			"matches": ["*://m.gewara.com/*/adverDetail.xhtml*"],
+			"js": ["jsapi.js", "m.adverDetail.js"],
+			"run_at": "document_end"
+		},
+		{
 			"matches": ["*://m.gewara.com/*/confirmOrder.xhtml*"],
 			"js": ["m.loading.dispose.js"],
 			"run_at": "document_end"
