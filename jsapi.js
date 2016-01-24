@@ -26,6 +26,11 @@ var 弹层 = new_('div', '', document.body);
 弹层.style.top = 0;
 弹层.style.zIndex = 1234567890;
 
+var 显示消息 = function(消息){
+	document.title = 消息;
+	return new_('li', 消息, 弹层);
+};
+
 var url正则 = function(参数名) {
 	return new RegExp('(?:' + 参数名 + '=)(\\d+)');
 };
