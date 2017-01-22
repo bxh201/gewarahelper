@@ -72,6 +72,10 @@ var gencb = function(p, c, type) {
 	return cb;
 };
 
+var _加载参数 = function(p, c, t){
+	return chrome.storage.sync.get(genkv(p, t), gencb(p, c, t));
+};
+
 var map_ua = {
 	UA: _ua
 };
@@ -85,8 +89,8 @@ var map_wanda_automod = {
 
 var map_load = Object.assign({}, map_ua, map_wanda);
 
-chrome.storage.sync.get(genkv(map_load), gencb(map_load));
-chrome.storage.sync.get(genkv(map_wanda_automod, 'checkbox'), gencb(map_wanda_automod, null, 'checkbox'));
+_加载参数(map_load);
+_加载参数(map_wanda_automod, null, 'checkbox');
 
 var _保存按钮绑定 = function(按钮, 映射, t, ex) {
 	按钮.onclick = function() {
