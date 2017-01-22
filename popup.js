@@ -1,29 +1,49 @@
-function mcc(k, v){
-	return {
+function mcc(k, v, g){
+	var o = {
 		url: 'http://m.gewara.com/',
 		name: k,
 		value: v,
 		expirationDate: parseInt((new Date()).getTime()/1000 + 60*60*24*365)
 	};
+	if(g) return {url: o['url'], name: o['name']};
+	return o;
 }
 
-_b1.onclick = function(){
-	chrome.cookies.set(mcc('partnerName', 'unionpayWallet'));
+var cookies列表 = ['partnerName'];
+var 加载cookies = function(a) {
+	a.forEach(function(n) {
+		chrome.cookies.get(mcc(n, null, true), function(c) {
+			var e = document.querySelector('input[id="' + n + '"]') || new_('input');
+			e.value = c ? c.value : '';
+		})
+	});
 };
+加载cookies(cookies列表);
+
+var 保存cookies = function() {
+	var l = [];
+	Array.prototype.slice.call(document.querySelectorAll('fieldset[class=cookies] input')).forEach(function(e) {
+		chrome.cookies.set(mcc(e.id, e.value));
+		l.push(e.id);
+	});
+	加载cookies(l);
+};
+_b_cookies.onclick = 保存cookies;
+
+[['银联钱包', 'unionpayWallet'], ['建行', 'ccbAppPay'], ['顺手付', 'sfAppPay']].forEach(function(e) {
+	var v = e[1];
+	new_('button', e[0], _partnerName).onclick = function() {
+		chrome.cookies.set(mcc('partnerName', v));
+		加载cookies(['partnerName']);
+	};
+});
 
 _b2.onclick = function(){
 	chrome.cookies.remove({
 		url: 'http://m.gewara.com/',
 		name: 'partnerName'
 	});
-};
-
-_ccb.onclick = function(){
-	chrome.cookies.set(mcc('partnerName', 'ccbAppPay'));
-};
-
-_sf.onclick = function(){
-	chrome.cookies.set(mcc('partnerName', 'sfAppPay'));
+	加载cookies(['partnerName']);
 };
 
 

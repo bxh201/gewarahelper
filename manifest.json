@@ -76,7 +76,7 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.21",
+	"version": "0.0.22",
 	"web_accessible_resources": [
 		"jsapi.js",
 		"m.adverDetail.inject.js"

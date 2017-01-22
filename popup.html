@@ -6,18 +6,22 @@
 <button class="tosave" id="_b_saveua">保存</button>
 留空则使用默认值。
 </fieldset>
+<fieldset class="cookies">
+<legend>Cookies</legend>
+<button id="_b2">删</button><label>partnerName
+<input id="partnerName" placeholder="partnerName" title="partnerName" style="width: 8em;" />
+<span id="_partnerName"></span></label>
+<br/>
+<button class="tosave" id="_b_cookies">保存</button>
+</fieldset>
 <fieldset>
-<legend>万达手机号</legend>
+<legend>万达积分手机号（旧接口，不再常用）</legend>
 <input id="_wanda" placeholder="万达选座的下单手机号" title="万达选座的下单手机号" size="11" />
 <label><input type="checkbox" id="_wanda_automod" />自动修改</label>
 <button class="tosave" id="_b_savewanda">保存</button>
 <br/>
-<small>同一个账号在同一个场次请勿反复提交，格瓦拉可能接收失败。</small>
+<small>同一个账号在同一个场次请勿反复提交，第三方可能接收失败。</small>
 </fieldset>
-<button id="_b1">增加银联钱包 Cookies</button>
-<button id="_ccb">增加建行 Cookies</button>
-<button id="_sf">增加顺手付 Cookies</button>
-<button id="_b2">删除合作方 Cookies</button>
 <script type="text/javascript" src="jsapi.js"></script>
 <script type="text/javascript" src="popup.js"></script>
 </body>
