@@ -17,6 +17,11 @@
 			"run_at": "document_end"
 		},
 		{
+			"matches": ["*://m.gewara.com/*/new/*", "*://m.gewara.com/wala/*", "*://m.gewara.com/touch/*"],
+			"js": ["m.setPxPerRem.js"],
+			"run_at": "document_end"
+		},
+		{
 			"matches": ["*://m.gewara.com/mall/*"],
 			"css": ["m.mall.landscape.css"]
 		},
@@ -76,7 +81,7 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.22",
+	"version": "0.0.23",
 	"web_accessible_resources": [
 		"jsapi.js",
 		"m.adverDetail.inject.js"
