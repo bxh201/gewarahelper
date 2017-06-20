@@ -1,4 +1,5 @@
 <meta charset="utf-8"/>
+<style></style>
 <body>
 <fieldset>
 <legend>User-Agent</legend>
@@ -15,12 +16,17 @@
 <button class="tosave" id="_b_cookies">保存</button>
 </fieldset>
 <fieldset>
+<legend>杂项</legend>
+<label class="自动保存"><input type="checkbox" id="签到" name="签到" />尝试微博控签到</label>
+<br/>
+<label class="自动保存">答题答案<input id="答案" name="答案" placeholder="答题答案" title="答题答案" width="20em" /></label>
+
+</fieldset>
+<fieldset>
 <legend>万达积分手机号（旧接口，不再常用）</legend>
 <input id="_wanda" placeholder="万达选座的下单手机号" title="万达选座的下单手机号" size="11" />
 <label><input type="checkbox" id="_wanda_automod" />自动修改</label>
 <button class="tosave" id="_b_savewanda">保存</button>
-<br/>
-<small>同一个账号在同一个场次请勿反复提交，第三方可能接收失败。</small>
 </fieldset>
 <script type="text/javascript" src="jsapi.js"></script>
 <script type="text/javascript" src="popup.js"></script>

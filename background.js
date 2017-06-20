@@ -91,7 +91,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 			'*://wappay.bypay.cn/*',
 			'*://wappaygw.alipay.com/*',
 			'*://mywap2.icbc.com.cn/*',
-			'*://netpay.cmbchina.com/netpayment/basehttp.dll*',
+			'*://cashier.95516.com/b2c/api/Pay.action*',
 			'*://netpay.cmbchina.com/netpayment/BaseHttp.dll*'
 		]
 	},

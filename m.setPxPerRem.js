@@ -1,4 +1,6 @@
 
+if (window.gewaraPurge) gewaraPurge.parentElement.removeChild(gewaraPurge);
+
 var cssEle = document.createElement('style');
 document.documentElement.firstElementChild.appendChild(cssEle);
 

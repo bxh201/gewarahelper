@@ -130,18 +130,60 @@ _保存按钮绑定(_b_saveua, map_ua);
 _保存按钮绑定(_b_savewanda, map_wanda, 'text', [[map_wanda_automod, 'checkbox']]);
 
 
+
+
+var type2prop = {
+	checkbox: 'checked',
+	radio: 'value'
+};
+var 保存 = function() {
+	var o = {};
+	var 元素列表 = Array.from(arguments);
+	元素列表.forEach(function(e) {
+		var 属性 = 'value';
+		if (e.tagName == 'INPUT' && type2prop.hasOwnProperty(e.type)) 属性 = type2prop[e.type];
+		console.log(e.tagName, e.name, 属性, e[属性]);
+		o[e.name] = e[属性];
+	});
+	chrome.storage.sync.set(o, function() {
+		console.log(o);
+		元素列表.forEach(function(e) {
+			e.parentElement.setAttribute('提示', e.name + ': ' + o[e.name]);
+			if(提示计时器.hasOwnProperty(e.name)) window.clearTimeout(提示计时器[e.name]);
+			提示计时器[e.name] = window.setTimeout(function() {
+				e.parentElement.setAttribute('提示', '');
+				delete 提示计时器[e.name];
+			}, 1500);
+		});
+	});
+};
+var 即时保存 = function() {
+	return 保存(this);
+};
+
+签到.onclick = 即时保存;
+答案.onchange = 即时保存;
+_加载参数({答案: 答案});
+_加载参数({签到: 签到}, null, 'checkbox');
+
+var 提示计时器 = {};
+document.styleSheets[0].addRule('label.自动保存::after', 'content: attr(提示); padding-left: 10px;');
+
+
+
 _ua.style.width = '100%';
 
-var resize = function(w, h){
+var resize = function(w, h, 不要复查){
 	if(document) {
 		var html = document.getElementsByTagName('html')[0];
 		if(html) {
 			if(w)html.style.width = w;
 			if(h)html.style.height = h;
+			if(w && !不要复查)window.setTimeout(function(){if(window.outerWidth < w) {resize(w + 10, false, true); window.setTimeout(function(){resize(w, h, 不要复查);});}}, 2000);
 		}
 	}
 	return window ? [window.innerWidth, window.innerHeight] : [w, h];
 };
 
-resize(400);
+window.setTimeout(function(){resize(400);});
 

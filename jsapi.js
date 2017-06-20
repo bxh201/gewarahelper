@@ -26,6 +26,14 @@ var 弹层 = new_('div', '', document.body);
 弹层.style.top = 0;
 弹层.style.zIndex = 1234567890;
 
+var new_li = function(文字, 对象) {
+	return new_('li', 文字, 对象 || 弹层);
+};
+var new_li_a = function(文字, 链接, 对象) {
+	var a;
+	return a = new_('a', 文字, new_li('', 对象)), a.href = 链接, a;
+};
+
 var 显示消息 = function(消息){
 	document.title = 消息;
 	return new_('li', 消息, 弹层);

@@ -22,6 +22,16 @@
 			"run_at": "document_end"
 		},
 		{
+			"matches": ["*://m.gewara.com/*/point/index.xhtml*"],
+			"js": ["jsapi.js", "m.point.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["*://m.gewara.com/*/wala/answer.xhtml*"],
+			"js": ["jsapi.js", "m.wala.answer.js"],
+			"run_at": "document_end"
+		},
+		{
 			"matches": ["*://m.gewara.com/mall/*"],
 			"css": ["m.mall.landscape.css"]
 		},
@@ -73,6 +83,7 @@
 		"storage",
 		"tabs",
 		"webRequest", "webRequestBlocking",
+		"*://*.95516.com/*",
 		"*://*.gewara.com/*",
 		"*://*.wandafilm.com/*",
 		"*://*.bypay.cn/*",
@@ -81,9 +92,10 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.23.2",
+	"version": "0.0.23.3",
 	"web_accessible_resources": [
 		"jsapi.js",
+		"m.point.inject.js",
 		"m.adverDetail.inject.js"
 	]
 }
