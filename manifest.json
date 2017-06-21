@@ -92,7 +92,7 @@
 		"*://*.cmbchina.com/*"
 	],
 	"incognito": "split",
-	"version": "0.0.23.3",
+	"version": "0.0.23.4",
 	"web_accessible_resources": [
 		"jsapi.js",
 		"m.point.inject.js",

@@ -162,9 +162,10 @@ var 即时保存 = function() {
 };
 
 签到.onclick = 即时保存;
+弹窗.onclick = 即时保存;
 答案.onchange = 即时保存;
 _加载参数({答案: 答案});
-_加载参数({签到: 签到}, null, 'checkbox');
+_加载参数({签到: 签到, 弹窗: 弹窗}, null, 'checkbox');
 
 var 提示计时器 = {};
 document.styleSheets[0].addRule('label.自动保存::after', 'content: attr(提示); padding-left: 10px;');
